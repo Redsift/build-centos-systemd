@@ -8,7 +8,7 @@ dependencies:
   override:
     - docker info
     - |
-        cat ./build-systemd | docker run -i -v ${CIRCLE_ARTIFACTS}:/artifacts -e SYSTEMD_VERSION:${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
+        cat ./build-systemd | docker run -i -v ${CIRCLE_ARTIFACTS}:/artifacts -e SYSTEMD_VERSION=${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
     
 deployment:
   prod:
