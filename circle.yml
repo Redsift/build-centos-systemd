@@ -8,6 +8,7 @@ dependencies:
   override:
     - docker info
     - |
+        sudo pip install awscli
         cat ./build-systemd | docker run -i -v ${CIRCLE_ARTIFACTS}:/artifacts -e SYSTEMD_VERSION=${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
     
 deployment:
