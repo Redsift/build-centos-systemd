@@ -1,7 +1,9 @@
 machine:
   services:
     - docker
-      
+  environment:
+    SYSTEMD_VERSION: 221
+          
 dependencies:
   override:
     - docker info
