@@ -1,0 +1,16 @@
+machine:
+  services:
+    - docker
+      
+dependencies:
+  override:
+    - docker info
+    - |
+        mkdir artifacts
+        docker run --rm -i quay.io/redsift/buildos-centos sh << $(cat ./build-systemd)
+    
+deployment:
+  prod:
+    branch: master
+    commands:
+      - s3..    

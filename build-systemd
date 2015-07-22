@@ -1,0 +1,21 @@
+#!/bin/sh
+
+SYSTEMD_VERSION=221
+
+cd /tmp 
+
+curl http://www.freedesktop.org/software/systemd/systemd-${SYSTEMD_VERSION}.tar.xz | tar -xJ 
+
+cd systemd-${SYSTEMD_VERSION} 
+
+mkdir /tmp/build
+
+./configure --prefix=/tmp/build/usr 
+
+make && make install 
+
+cd /tmp/build
+
+tar -Jcf /artifacts/systemd-${SYSTEMD_VERSION}-usr.tar.xz usr
+
+aws s3 cp /artifacts/systemd-${SYSTEMD_VERSION}-usr.tar.xz s3://${S3_BUCKET}/systemd
