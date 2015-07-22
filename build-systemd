@@ -8,7 +8,7 @@ cd systemd-${SYSTEMD_VERSION}
 
 mkdir /tmp/build
 
-./configure --prefix=/tmp/build/usr 
+./configure --prefix=/tmp/build/usr --rootprefix=/tmp/build/usr
 
 make && make install 
 
