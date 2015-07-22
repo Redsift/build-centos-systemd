@@ -7,7 +7,7 @@ dependencies:
     - docker info
     - |
         mkdir artifacts
-        cat ./build-systemd | docker run -i -v ./artifacts:/artifacts -e SYSTEMD_VERSION:${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
+        cat ./build-systemd | docker run -i -v ${PWD}/artifacts:/artifacts -e SYSTEMD_VERSION:${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
     
 deployment:
   prod:
