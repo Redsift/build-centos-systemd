@@ -8,8 +8,7 @@ cd systemd-${SYSTEMD_VERSION}
 
 mkdir /tmp/build
 
-./configure --prefix=/tmp/build/usr --exec-prefix=/tmp/build/usr
-
+./configure --with-rootprefix=/tmp/build/usr --disable-kdbus --disable-terminal --disable-manpages
 make && make install 
 
 cd /tmp/build
