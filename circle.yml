@@ -7,10 +7,10 @@ dependencies:
     - docker info
     - |
         mkdir artifacts
-        docker run --rm -i quay.io/redsift/buildos-centos sh << $(cat ./build-systemd)
+        cat /build-systemd | docker run -i -v ./artifacts:/artifacts -e SYSTEMD_VERSION:${SYSTEMD_VERSION} quay.io/redsift/buildos-centos sh
     
 deployment:
   prod:
     branch: master
     commands:
-      - s3..    
+      - aws s3 cp ./artifacts/systemd-${SYSTEMD_VERSION}-usr.tar.xz s3://${S3_BUCKET}/systemd/ 
